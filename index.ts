@@ -1,25 +1,11 @@
 import { connect } from "./socket";
 import { sequences, SequenceName, Keys } from "./state";
-
-const sendKey = async (key: Keys) =>
-  fetch(`http://${process.env.TVIP}/6/input/key`, {
-    method: "post",
-    body: JSON.stringify({
-      key
-    })
-  })
-    .then(
-      () =>
-        new Promise(yay => {
-          setTimeout(yay, 500);
-        })
-    )
-    .catch(console.error);
+import { sendKey } from "./tools";
 
 const play = async (seq: Keys[]) => {
   for (let key of seq) {
     console.log(key);
-    await sendKey(key);
+    await sendKey(key, { tvip: process.env.TVIP, fetchFn: fetch });
   }
 };
 

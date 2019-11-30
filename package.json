@@ -13,10 +13,12 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@types/node": "^12.12.14",
     "btoa": "^1.2.1",
     "digest-fetch": "^1.0.7",
     "digest-header": "0.0.1",
     "dotenv": "^8.2.0",
+    "express": "^4.17.1",
     "node-fetch": "^2.6.0",
     "parcel": "^1.12.4"
   },
