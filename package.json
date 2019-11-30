@@ -11,10 +11,6 @@
   "browserslist": [
     "last 1 Chrome versions"
   ],
-  "staticFiles": {
-    "staticPath": "public",
-    "watcherGlob": "**"
-  },
   "author": "",
   "license": "ISC",
   "dependencies": {
@@ -27,8 +23,7 @@
     "express": "^4.17.1",
     "firebase": "^7.5.0",
     "node-fetch": "^2.6.0",
-    "parcel": "^1.12.4",
-    "parcel-plugin-static-files-copy": "^2.2.1"
+    "parcel": "^1.12.4"
   },
   "devDependencies": {
     "typescript": "^3.7.2"

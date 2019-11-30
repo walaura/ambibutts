@@ -1,4 +1,6 @@
-import { Keys } from "./state";
+import { Action, sequences } from "./state";
+
+export type Dispatch = (action: Action) => void;
 
 type SendKeyConf = { tvip: unknown; fetchFn: Function };
 
@@ -22,3 +24,10 @@ export const sendKey = async (key: Keys, { tvip, fetchFn }: SendKeyConf) =>
         })
     )
     .catch(console.error);
+
+export const dispatch: Dispatch = action => {
+  console.log(action);
+  if (action.type === "sequence") {
+    play(sequences[action.seq], { tvip: process.env.TVIP, fetchFn: fetch });
+  }
+};

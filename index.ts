@@ -1,31 +1,48 @@
-import { connect } from "./js/socket";
-import { sequences, SequenceName, Keys } from "./js/state";
-import { sendKey } from "./js/tools";
+import { dispatchRemote, registerRemote } from "./js/remote";
+import { SequenceName, sequences } from "./js/state";
 
-const play = async (seq: Keys[]) => {
-  for (let key of seq) {
-    console.log(key);
-    await sendKey(key, { tvip: process.env.TVIP, fetchFn: fetch });
-  }
+const addButton = ({ onclick, name }) => {
+  const $btn = document.createElement("button");
+  $btn.innerText = name;
+  $btn.onclick = onclick;
+  document.body.appendChild($btn);
 };
 
 const main = async () => {
-  const dispatch = await connect(action => {
-    console.log(action);
-    if (action.type === "sequence") {
-      play(sequences[action.seq]);
-    }
-  });
-  Object.keys(sequences).forEach((name: SequenceName) => {
-    const $btn = document.createElement("button");
-    $btn.innerText = name;
-    $btn.onclick = () =>
-      dispatch({
-        type: "sequence",
-        seq: name
+  const workers = await navigator.serviceWorker.getRegistrations();
+  const hasWorkers = workers.length > 0;
+
+  if (!hasWorkers) {
+    addButton({
+      name: "register sw",
+      onclick: async () => {
+        await registerRemote();
+        window.location.reload();
+      }
+    });
+    Object.keys(sequences).forEach((name: SequenceName) => {
+      addButton({
+        name,
+        onclick: () =>
+          dispatchRemote({
+            type: "sequence",
+            seq: name
+          })
       });
-    document.body.appendChild($btn);
-  });
+    });
+  } else {
+    addButton({
+      name: "unregister sws",
+      onclick: async () => {
+        await Promise.all(
+          workers.map(sw => {
+            sw.unregister();
+          })
+        );
+        window.location.reload();
+      }
+    });
+  }
 };
 
 main();
