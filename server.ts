@@ -6,7 +6,7 @@ import fetch from "node-fetch";
 import { play } from "./tools";
 
 const app = express();
-const port = 3000;
+const port = 1212;
 
 app.get("/seq/:command", async (req, res) => {
   const { command } = req.params;
