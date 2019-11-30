@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "done": "parcel serve index.html"
   },
   "browserslist": [
     "last 1 Chrome versions"
@@ -16,7 +17,8 @@
     "digest-fetch": "^1.0.7",
     "digest-header": "0.0.1",
     "dotenv": "^8.2.0",
-    "node-fetch": "^2.6.0"
+    "node-fetch": "^2.6.0",
+    "parcel": "^1.12.4"
   },
   "devDependencies": {
     "typescript": "^3.7.2"
