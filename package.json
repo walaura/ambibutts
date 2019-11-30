@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "done": "parcel serve index.html"
+    "build": "parcel build index.html"
   },
   "browserslist": [
     "last 1 Chrome versions"
