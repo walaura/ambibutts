@@ -5,12 +5,16 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "concurrently \"ts-node server.ts\" \"lt --subdomain alexa-philips-tv --port 1212\"",
+    "start": "parcel index.html",
     "build": "parcel build index.html"
   },
   "browserslist": [
     "last 1 Chrome versions"
   ],
+  "staticFiles": {
+    "staticPath": "public",
+    "watcherGlob": "**"
+  },
   "author": "",
   "license": "ISC",
   "dependencies": {
@@ -21,10 +25,10 @@
     "digest-header": "0.0.1",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
-    "localtunnel": "^2.0.0",
+    "firebase": "^7.5.0",
     "node-fetch": "^2.6.0",
     "parcel": "^1.12.4",
-    "ts-node": "^8.5.4"
+    "parcel-plugin-static-files-copy": "^2.2.1"
   },
   "devDependencies": {
     "typescript": "^3.7.2"

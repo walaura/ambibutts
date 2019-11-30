@@ -1,9 +1,9 @@
 import { config } from "dotenv";
 config();
-import { sequences } from "./state";
+import { sequences } from "./js/state";
 import * as express from "express";
 import fetch from "node-fetch";
-import { play } from "./tools";
+import { play } from "./js/tools";
 
 const app = express();
 const port = 1212;

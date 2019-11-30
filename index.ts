@@ -1,6 +1,6 @@
-import { connect } from "./socket";
-import { sequences, SequenceName, Keys } from "./state";
-import { sendKey } from "./tools";
+import { connect } from "./js/socket";
+import { sequences, SequenceName, Keys } from "./js/state";
+import { sendKey } from "./js/tools";
 
 const play = async (seq: Keys[]) => {
   for (let key of seq) {
