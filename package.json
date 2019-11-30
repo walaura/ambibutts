@@ -1,0 +1,24 @@
+{
+  "name": "philips-alexa",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "browserslist": [
+    "last 1 Chrome versions"
+  ],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "btoa": "^1.2.1",
+    "digest-fetch": "^1.0.7",
+    "digest-header": "0.0.1",
+    "dotenv": "^8.2.0",
+    "node-fetch": "^2.6.0"
+  },
+  "devDependencies": {
+    "typescript": "^3.7.2"
+  }
+}
