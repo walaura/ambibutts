@@ -16,6 +16,7 @@
   "dependencies": {
     "@types/node": "^12.12.14",
     "btoa": "^1.2.1",
+    "concurrently": "^5.0.0",
     "digest-fetch": "^1.0.7",
     "digest-header": "0.0.1",
     "dotenv": "^8.2.0",
