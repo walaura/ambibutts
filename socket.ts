@@ -3,9 +3,7 @@ import { Action } from "./state";
 const connect = (
   dispatch: (action: Action) => void
 ): Promise<(action: Action) => void> => {
-  const socket = new WebSocket(
-    `wss://connect.websocket.in/v2/${process.env.SOCKET_CHANNEL}?token=${process.env.SOCKET_KEY}`
-  );
+  const socket = new WebSocket(`wss://secretive-cotija.glitch.me`);
   socket.onmessage = event => {
     try {
       const action = JSON.parse(event.data) as Action;
