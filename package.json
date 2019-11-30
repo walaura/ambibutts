@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "ts-node server.ts",
     "build": "parcel build index.html"
   },
   "browserslist": [
@@ -20,7 +21,8 @@
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "node-fetch": "^2.6.0",
-    "parcel": "^1.12.4"
+    "parcel": "^1.12.4",
+    "ts-node": "^8.5.4"
   },
   "devDependencies": {
     "typescript": "^3.7.2"
