@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "concurrently \"ts-node server.ts\" \"lt --port 1212\"",
+    "start": "concurrently \"ts-node server.ts\" \"lt --subdomain alexa-philips-tv --port 1212\"",
     "build": "parcel build index.html"
   },
   "browserslist": [
