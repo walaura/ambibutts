@@ -6,7 +6,7 @@
   "scripts": {
     "postinstall": "remote-env",
     "start": "ts-node server/index.ts",
-    "start-buttons": "cd buttonboard && parcel index.html"
+    "start-buttons": "forever-tunnel-dl .tunnels.json && cd buttonboard && parcel index.html"
   },
   "browserslist": [
     "last 1 Chrome versions"
@@ -16,7 +16,7 @@
   "dependencies": {
     "@types/express": "^4.17.2",
     "@types/node": "^12.12.14",
-    "@walaura/forever-tunnel": "^1.0.1",
+    "@walaura/forever-tunnel": "^1.0.2",
     "@walaura/remote-env": "^1.0.0",
     "cors": "^2.8.5",
     "dotenv": "^8.2.0",

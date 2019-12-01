@@ -105,3 +105,4 @@ dist
 
 ## Project stuff
 .config.json
+.tunnels.json

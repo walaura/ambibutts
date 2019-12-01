@@ -1,12 +1,18 @@
-import { dispatch } from "../shared/client-to-fish";
-import { SequenceName, sequences } from "../shared/tv";
+import { SequenceName, sequences, Action } from "../shared/tv";
 import { addButton } from "./js/helpers";
 
-import { read } from "@walaura/forever-tunnel";
+const urls = require("../.tunnels.json");
+
+const dispatch = (action: Action) => {
+  return fetch(urls["ambibutts-server"] + "/action", {
+    method: "post",
+    body: JSON.stringify({
+      action
+    })
+  });
+};
 
 const main = async () => {
-  console.log(process.env.FOREVERTUNNEL_BUCKET);
-  console.log(read());
   Object.keys(sequences).forEach((name: SequenceName) => {
     addButton({
       name,

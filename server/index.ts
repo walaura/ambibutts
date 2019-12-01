@@ -1,16 +1,20 @@
+import { sequences } from "./../shared/tv";
 import { getActionFromRequest } from "./transform/from-request";
 import { dispatch } from "./transform/to-tv";
+import * as express from "express";
+import * as bodyParser from "body-parser";
+import * as cors from "cors";
 
-const express = require("express");
-const cors = require("cors");
-const bodyParser = require("body-parser");
 const app = express();
-
-app.use(cors());
+app.use(cors() as any);
 app.use(bodyParser.json({ type: "*/*" }));
 
 app.get("/", (req, res) => {
   res.send({ ok: "ok" });
+});
+
+app.get("/what-can-i-do", (req, res) => {
+  res.send({ sequences: Object.keys(sequences) });
 });
 
 app.post("/action", async (req, res) => {
@@ -25,5 +29,9 @@ app.post("/action", async (req, res) => {
 
 // listen for requests :)
 const listener = app.listen(process.env.PORT, function() {
-  console.log("Your app is listening on port " + listener.address().port);
+  const address = listener.address();
+  console.log(
+    "Your app is listening on port " +
+      (typeof address === "string" ? address : address.port)
+  );
 });
