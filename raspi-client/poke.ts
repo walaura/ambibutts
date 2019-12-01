@@ -1,4 +1,4 @@
-import { SequenceName, sequences } from "./js/config";
+import { SequenceName, sequences } from "./js/tv";
 import { addButton, getWorkers } from "./js/helpers";
 import { dispatchRemote } from "./js/remote";
 

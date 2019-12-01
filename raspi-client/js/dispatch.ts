@@ -1,4 +1,4 @@
-import { Action, sequences } from "./config";
+import { Action, sequences } from "./tv";
 
 export type Dispatch = (action: Action) => void;
 
