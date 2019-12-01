@@ -4,6 +4,9 @@ export const getWorkers = async () => {
   return { workers, hasWorkers };
 };
 
+export const registerWorker = () =>
+  navigator.serviceWorker.register("../sw.ts");
+
 export const addButton = ({
   onclick,
   name,
@@ -13,8 +16,8 @@ export const addButton = ({
   const $btn = document.createElement("button");
   $btn.innerText = name;
   window.app.appendChild($btn);
-  if(secondary) {
-    $btn.dataset.secondary = true
+  if (secondary) {
+    $btn.dataset.secondary = true;
   }
   if (useOnce) {
     $btn.onclick = async (...args) => {

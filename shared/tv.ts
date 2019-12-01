@@ -68,3 +68,4 @@ export const sequences = {
 
 export type SequenceName = keyof typeof sequences;
 export type Action = { type: "sequence"; seq: SequenceName };
+export type Dispatcher = (action: Action) => void;

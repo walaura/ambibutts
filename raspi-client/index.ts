@@ -1,5 +1,13 @@
-import { registerRemote } from "./js/remote";
-import { getWorkers, addButton } from "./js/helpers";
+import { getWorkers, addButton, registerWorker } from "./js/helpers";
+import { register } from "./connectors/to-fish";
+
+const install = async () => {
+  const sw = registerWorker();
+  const messaging = await register(await sw);
+  messaging.onMessage(() => {
+    alert("close this tab!!");
+  });
+};
 
 const main = async () => {
   const { hasWorkers, workers } = await getWorkers();
@@ -9,7 +17,7 @@ const main = async () => {
       name: "Install server",
       useOnce: true,
       onclick: async () => {
-        await registerRemote();
+        await install();
       }
     });
   } else {
@@ -22,7 +30,7 @@ const main = async () => {
             sw.unregister();
           })
         );
-        await registerRemote();
+        await install();
       }
     });
     addButton({
