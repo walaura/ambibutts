@@ -17,3 +17,9 @@ This app needs a stable web address for the aws lambda to ping it so that's why 
 ## raspi-client
 
 This is running on a 24/7 raspberry pi on my living room. it's local so it reaches the tv. there's two parts to this: a website that lets you post commands to `fish` and a websocket that needs to be installed that runs in the background and sends the notifications it gets to the tv api (`TV_REMOTE_URL`, in my case `https://192.168.0.21:1925`)
+
+# faqs
+
+## why didnt you do [solution thats clearly easier]
+
+i finished this at 1AM and my brain is not braining and in the course of this ive come up with even more approaches, the main issue is mapping my private internet to the outside world reliably and also using apis where i know some of the stuff going on and i can learn something new (so web push == good, trying to create my own ngrok == bad)
