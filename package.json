@@ -4,9 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "start-raspi": "cd raspi-client && parcel index.html",
-    "start-push": "ts-node push-fwd/server.ts"
+    "start": "ts-node push-fwd/server.ts"
   },
   "browserslist": [
     "last 1 Chrome versions"
