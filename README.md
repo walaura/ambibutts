@@ -24,6 +24,8 @@ This app needs a stable web address for the aws lambda to ping it so that's why 
 
 This is running on a 24/7 raspberry pi on my living room. it's local so it reaches the tv. there's two parts to this: a website that lets you post commands to `fish` and a websocket that needs to be installed that runs in the background and sends the notifications it gets to the tv api (`endpoints.tv`, in my case `https://192.168.0.21:1925`)
 
+![image](https://user-images.githubusercontent.com/11539094/69912989-8709c300-1429-11ea-9298-155e6a095666.png)
+
 ###
 
 # faqs
