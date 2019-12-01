@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start-raspi": "cd raspi-client && parcel index.html",
-    "build-raspi": "cd raspi-client && parcel build index.html --no-source-maps && serve dist",
+    "build-raspi": "cd raspi-client && parcel build index.html --no-source-maps && serve -l 3000 dist",
     "postinstall": "remote-env",
     "start": "ts-node fish/server.ts"
   },
