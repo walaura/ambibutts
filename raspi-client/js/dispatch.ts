@@ -5,6 +5,7 @@ export type Dispatch = (action: Action) => void;
 
 export const play = async (seq: Keys[]) => {
   for (let key of seq) {
+    console.log(key);
     await sendKey(key);
   }
 };
@@ -19,7 +20,7 @@ export const sendKey = async (key: Keys) =>
     .then(
       () =>
         new Promise(yay => {
-          setTimeout(yay, 500);
+          setTimeout(yay, 100);
         })
     )
     .catch(console.error);

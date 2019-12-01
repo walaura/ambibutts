@@ -49,9 +49,16 @@ export enum Keys {
   "Online" = "Online"
 }
 
+const repeat = (key: Keys, length: number) =>
+  Array.apply(null, { length }).map(() => key);
+const resetSource = [Keys.Source, ...repeat(Keys.CursorLeft, 10)];
+const toSourceNumber = (number=0) => [...resetSource, ...repeat(Keys.CursorRight, number), Keys.Confirm];
+
 export const sequences = {
   nextHdmi: [Keys.Source, Keys.CursorRight, Keys.Confirm],
-  prevHdmi: [Keys.Source, Keys.CursorLeft, Keys.Confirm]
+  prevHdmi: [Keys.Source, Keys.CursorLeft, Keys.Confirm],
+  xbox: toSourceNumber(3),
+  switch: toSourceNumber(4),
 };
 
 export type SequenceName = keyof typeof sequences;
