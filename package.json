@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "postinstall": "remote-env",
     "start-raspi": "cd raspi-client && parcel index.html",
+    "postinstall": "remote-env && ln -s .config.json raspi-client/.config.json",
     "start": "ts-node fish/server.ts"
   },
   "browserslist": [

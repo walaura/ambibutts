@@ -18,7 +18,9 @@ const register = async (
   await fetch(config.endpoints.fish + `/register/${token}`, {
     method: "post"
   }).then(r => r.json());
-
+  messaging.onMessage(msg => {
+    sw.active.postMessage(msg);
+  });
   return;
 };
 
