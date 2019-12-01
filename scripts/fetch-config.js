@@ -2,19 +2,44 @@ require("dotenv").config();
 const fetch = require("node-fetch");
 const fs = require("fs");
 
+const configAt = __dirname + "/../config.json";
+
+let existsAlready = false;
+
 const main = async () => {
+  if (fs.existsSync(configAt)) {
+    console.info("💁‍♀️ you got a config file already!");
+    existsAlready = true;
+  }
+  if (!process.env.CONFIG_URL) {
+    if (existsAlready) {
+      console.info(
+        "💁‍♀️ you dont have CONFIG_URL set up but you already have a config dfile so it all worked out"
+      );
+    } else {
+      console.error(
+        `🤯 Please set CONFIG_URL in your env or manually add a /.config.json file as seen in config.ts`,
+        e
+      );
+    }
+    return;
+  }
   try {
     const config = await fetch(process.env.CONFIG_URL).then(res => res.json());
-    fs.writeFileSync(
-      __dirname + "/../config.json",
-      JSON.stringify(config, null, "\t")
-    );
-    console.log(__dirname + "/../config.json");
+    fs.writeFileSync(configAt, JSON.stringify(config, null, "\t"));
+    console.log(__dirname + "/../.config.json");
   } catch (e) {
-    console.error(
-      `Please set CONFIG_URL in your env or manually add a config file as seen in config.ts`,
-      e
-    );
+    if (existsAlready) {
+      console.error(e);
+      console.error(
+        `🤯 Unable to fetch config from ${process.env.CONFIG_URL}. Using existing config. is it stale?`
+      );
+    } else {
+      console.error(e);
+      console.error(
+        `🤯 Unable to fetch config from ${process.env.CONFIG_URL}. Please check the URL or manually add a .config.json file`
+      );
+    }
   }
 };
 
