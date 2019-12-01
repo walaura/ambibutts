@@ -1,11 +1,10 @@
 {
-  "name": "philips-alexa",
+  "name": "ambibutts",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
-    "fetch-config": "node scripts/fetch-config.js",
-    "postinstall": "npm run fetch-config",
+    "postinstall": "remote-env",
     "start-raspi": "cd raspi-client && parcel index.html",
     "start": "ts-node fish/server.ts"
   },
@@ -16,12 +15,8 @@
   "license": "ISC",
   "dependencies": {
     "@types/node": "^12.12.14",
-    "atob": "^2.1.2",
-    "btoa": "^1.2.1",
-    "concurrently": "^5.0.0",
+    "@walaura/remote-env": "^1.0.0",
     "cors": "^2.8.5",
-    "digest-fetch": "^1.0.7",
-    "digest-header": "0.0.1",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "firebase": "^7.5.0",

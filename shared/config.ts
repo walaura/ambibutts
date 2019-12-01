@@ -32,5 +32,5 @@ interface Config {
   };
 }
 
-const config = require("./.config.json") as Config;
+const config = require("@walaura/remote-env") as Config;
 export default config;

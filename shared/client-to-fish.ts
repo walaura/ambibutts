@@ -1,4 +1,4 @@
-import config from "../config";
+import config from "./config";
 import { Dispatcher } from "./tv";
 
 const dispatch: Dispatcher = payload => {
