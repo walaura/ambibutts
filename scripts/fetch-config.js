@@ -14,13 +14,14 @@ const main = async () => {
   if (!process.env.CONFIG_URL) {
     if (existsAlready) {
       console.info(
-        "💁‍♀️ you dont have CONFIG_URL set up but you already have a config dfile so it all worked out"
+        "💁‍♀️ you dont have CONFIG_URL set up but you already have a config file so it all worked out"
       );
     } else {
       console.error(
         `🤯 Please set CONFIG_URL in your env or manually add a /.config.json file as seen in config.ts`,
         e
       );
+      process.exit(1);
     }
     return;
   }
@@ -39,6 +40,7 @@ const main = async () => {
       console.error(
         `🤯 Unable to fetch config from ${process.env.CONFIG_URL}. Please check the URL or manually add a .config.json file`
       );
+      process.exit(1);
     }
   }
 };
