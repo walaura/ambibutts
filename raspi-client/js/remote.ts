@@ -1,5 +1,5 @@
 import * as firebase from "firebase";
-import { firebaseConfig,Action } from "./config";
+import { firebaseConfig, Action } from "./config";
 import { Dispatch } from "./dispatch";
 
 export const getActionFromMessage = msg => {
@@ -12,7 +12,7 @@ export const getActionFromMessage = msg => {
 };
 
 const dispatchRemote: Dispatch = payload => {
-  fetch("https://firebase-push-gateway.glitch.me/send", {
+  fetch(process.env.FISH_REMOTE_URL + "/send", {
     method: "post",
     body: JSON.stringify({ payload, fish: process.env.FISH_KEY })
   });
@@ -31,7 +31,7 @@ const registerRemote = async (): Promise<void> => {
   messaging.useServiceWorker(await sw);
 
   const token = await messaging.getToken();
-  await fetch(`https://firebase-push-gateway.glitch.me/register/${token}`, {
+  await fetch(process.env.FISH_REMOTE_URL + `/register/${token}`, {
     method: "post"
   }).then(r => r.json());
 

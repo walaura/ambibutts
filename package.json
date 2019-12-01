@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start-raspi": "cd raspi-client && parcel index.html",
-    "start": "ts-node push-fwd/server.ts"
+    "start": "ts-node fish/server.ts"
   },
   "browserslist": [
     "last 1 Chrome versions"
