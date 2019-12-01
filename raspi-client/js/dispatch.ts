@@ -1,20 +1,16 @@
-import { Action, sequences } from "./tv";
+import { Action, Keys, sequences } from "./tv";
+import config from "../../config";
 
 export type Dispatch = (action: Action) => void;
 
-type SendKeyConf = { TV_REMOTE_URL: unknown; fetchFn: Function };
-
-export const play = async (seq: Keys[], sendKeyConf: SendKeyConf) => {
+export const play = async (seq: Keys[]) => {
   for (let key of seq) {
-    await sendKey(key, sendKeyConf);
+    await sendKey(key);
   }
 };
 
-export const sendKey = async (
-  key: Keys,
-  { TV_REMOTE_URL, fetchFn }: SendKeyConf
-) =>
-  fetchFn(`${TV_REMOTE_URL}/6/input/key`, {
+export const sendKey = async (key: Keys) =>
+  fetch(`${config.endpoints.tv}/6/input/key`, {
     method: "post",
     body: JSON.stringify({
       key
@@ -31,9 +27,6 @@ export const sendKey = async (
 export const dispatch: Dispatch = action => {
   console.log(action);
   if (action.type === "sequence") {
-    play(sequences[action.seq], {
-      TV_REMOTE_URL: process.env.TV_REMOTE_URL,
-      fetchFn: fetch
-    });
+    play(sequences[action.seq]);
   }
 };

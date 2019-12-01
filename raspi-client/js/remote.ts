@@ -13,10 +13,11 @@ export const getActionFromMessage = msg => {
 };
 
 const dispatchRemote: Dispatch = payload => {
-  fetch(process.env.FISH_REMOTE_URL + "/send", {
+  fetch(config.endpoints.fish + "/send", {
     method: "post",
     body: JSON.stringify({
-      payload
+      payload,
+      apiKey: config.firebase.apiKey
     })
   });
 };
@@ -34,7 +35,7 @@ const registerRemote = async (): Promise<void> => {
   messaging.useServiceWorker(await sw);
 
   const token = await messaging.getToken();
-  await fetch(process.env.FISH_REMOTE_URL + `/register/${token}`, {
+  await fetch(config.endpoints.fish + `/register/${token}`, {
     method: "post"
   }).then(r => r.json());
 

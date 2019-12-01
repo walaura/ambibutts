@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "postinstall": "node scripts/fetch-config.js",
+    "fetch-config": "node scripts/fetch-config.js",
+    "postinstall": "npm run fetch-config",
     "start-raspi": "cd raspi-client && parcel index.html",
     "start": "ts-node fish/server.ts"
   },

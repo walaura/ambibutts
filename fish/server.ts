@@ -1,3 +1,5 @@
+import config from "../config";
+
 require("dotenv").config();
 const express = require("express");
 const admin = require("firebase-admin");
@@ -7,8 +9,8 @@ const bodyParser = require("body-parser");
 const app = express();
 
 admin.initializeApp({
-  credential: admin.credential.cert(JSON.parse(atob(process.env.FB_SA_KEY))),
-  databaseURL: "https://push-test-afbe2.firebaseio.com"
+  credential: admin.credential.cert(config["firebase-admin"]),
+  databaseURL: config.firebase.databaseURL
 });
 
 app.use(cors());
@@ -22,7 +24,7 @@ app.post("/register/:tk", (req, res) => {
   const { tk } = req.params;
   admin
     .messaging()
-    .subscribeToTopic([tk], process.env.TOPIC)
+    .subscribeToTopic([tk], config.fish.topic)
     .then(function(response) {
       console.log(`Successfully subscribed ${tk} to topic`, response);
       res.send({ msg: `Successfully subscribed ${tk} to topic`, response });
@@ -34,10 +36,10 @@ app.post("/register/:tk", (req, res) => {
 });
 
 app.post("/send", (req, res) => {
-  const topic = process.env.TOPIC;
+  const topic = config.fish.topic;
   const { payload, fish } = req.body;
 
-  if (!payload) {
+  if (!payload || !fish || fish !== config.fish.secret) {
     throw "invalid push";
   }
 

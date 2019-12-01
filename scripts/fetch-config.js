@@ -4,9 +4,7 @@ const fs = require("fs");
 
 const main = async () => {
   try {
-    const config = await fetch(process.env.CLIENT_CONFIG_URL).then(res =>
-      res.json()
-    );
+    const config = await fetch(process.env.CONFIG_URL).then(res => res.json());
     fs.writeFileSync(
       __dirname + "/../config.json",
       JSON.stringify(config, null, "\t")
@@ -14,7 +12,7 @@ const main = async () => {
     console.log(__dirname + "/../config.json");
   } catch (e) {
     console.error(
-      `Please set CLIENT_CONFIG_URL in your env or manually add a config file as seen in config.ts`,
+      `Please set CONFIG_URL in your env or manually add a config file as seen in config.ts`,
       e
     );
   }
