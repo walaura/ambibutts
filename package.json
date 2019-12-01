@@ -7,7 +7,8 @@
     "start-raspi": "cd raspi-client && parcel index.html",
     "build-raspi": "cd raspi-client && parcel build index.html --no-source-maps && serve -l 5000 dist",
     "postinstall": "remote-env",
-    "start": "ts-node fish/server.ts"
+    "start": "ts-node fish/server.ts",
+    "start-server": "ts-node-dev server/index.ts"
   },
   "browserslist": [
     "last 1 Chrome versions"
@@ -15,6 +16,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@types/express": "^4.17.2",
     "@types/node": "^12.12.14",
     "@walaura/remote-env": "^1.0.0",
     "cors": "^2.8.5",
@@ -26,6 +28,7 @@
     "parcel": "^1.12.4",
     "serve": "^11.2.0",
     "ts-node": "^8.5.4",
+    "ts-node-dev": "^1.0.0-pre.44",
     "typescript": "^3.7.2"
   }
 }
