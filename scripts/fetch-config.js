@@ -2,7 +2,7 @@ require("dotenv").config();
 const fetch = require("node-fetch");
 const fs = require("fs");
 
-const configAt = __dirname + "/../config.json";
+const configAt = __dirname + "/../.config.json";
 
 let existsAlready = false;
 
