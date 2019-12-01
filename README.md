@@ -16,4 +16,4 @@ This app needs a stable web address for the aws lambda to ping it so that's why 
 
 ## raspi-client
 
-This is running on a 24/7 raspberry pi on my living room. there's two parts to this: a website that lets you post commands to `fish` and a websocket that needs to be installed that runs in the background and sends the notifications it gets to the tv api
+This is running on a 24/7 raspberry pi on my living room. there's two parts to this: a website that lets you post commands to `fish` and a websocket that needs to be installed that runs in the background and sends the notifications it gets to the tv api (`TV_REMOTE_URL`, in my case `https://192.168.0.21:1925`)
