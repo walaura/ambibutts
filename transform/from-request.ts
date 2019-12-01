@@ -1,4 +1,4 @@
-import { Action } from "../../shared/tv";
+import { Action } from "../types/tv";
 
 export const getActionFromRequest = (req: any): Action => {
   const action = req.body.action as Action;

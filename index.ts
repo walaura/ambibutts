@@ -1,4 +1,4 @@
-import { sequences } from "./../shared/tv";
+import { sequences } from "./types/tv";
 import { getActionFromRequest } from "./transform/from-request";
 import { dispatch } from "./transform/to-tv";
 import * as express from "express";

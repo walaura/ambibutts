@@ -1,6 +1,7 @@
+require("dotenv").config();
+
 import fetch from "node-fetch";
-import config from "../../shared/config";
-import { Dispatcher, Keys, sequences } from "../../shared/tv";
+import { Dispatcher, Keys, sequences } from "../types/tv";
 
 const play = async (seq: Keys[]) => {
   for (let key of seq) {
@@ -10,7 +11,7 @@ const play = async (seq: Keys[]) => {
 };
 
 const sendKey = async (key: Keys) =>
-  fetch(`${config.endpoints.tv}/6/input/key`, {
+  fetch(`${process.env.TV_URL}/6/input/key`, {
     method: "post",
     body: JSON.stringify({
       key
