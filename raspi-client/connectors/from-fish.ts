@@ -17,10 +17,17 @@ const play = async (seq: Keys[]) => {
   }
 };
 
-const dispatch: Dispatcher = action => {
+const dispatch: Dispatcher = async action => {
   console.log(action);
   if (action.type === "sequence") {
     play(sequences[action.seq]);
+  } else if (action.type === "refresh-sw") {
+    registration
+      .update()
+      .then(status => {
+        console.log(status, "yoy");
+      })
+      .catch(console.error);
   }
 };
 

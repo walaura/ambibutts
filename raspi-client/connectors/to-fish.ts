@@ -19,9 +19,9 @@ const register = async (
     method: "post"
   }).then(r => r.json());
   messaging.onMessage(msg => {
+    console.log(msg);
     sw.active.postMessage(msg);
   });
-  return;
 };
 
 export { register };

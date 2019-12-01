@@ -4,9 +4,6 @@ import { register } from "./connectors/to-fish";
 const install = async () => {
   const sw = registerWorker();
   const messaging = await register(await sw);
-  messaging.onMessage(() => {
-    alert("close this tab!!");
-  });
 };
 
 const main = async () => {

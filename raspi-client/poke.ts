@@ -13,6 +13,13 @@ const main = async () => {
         })
     });
   });
+  addButton({
+    name: "refresh sw",
+    onclick: () =>
+      dispatch({
+        type: "refresh-sw"
+      })
+  });
 };
 
 main();
