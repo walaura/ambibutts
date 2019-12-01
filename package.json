@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "postinstall": "remote-env",
-    "start": "ts-node-dev server/index.ts",
+    "start": "ts-node server/index.ts",
     "start-buttons": "cd buttonboard && parcel index.html"
   },
   "browserslist": [
