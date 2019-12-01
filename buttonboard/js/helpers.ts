@@ -1,12 +1,3 @@
-export const getWorkers = async () => {
-  const workers = await navigator.serviceWorker.getRegistrations();
-  const hasWorkers = workers.length > 0;
-  return { workers, hasWorkers };
-};
-
-export const registerWorker = () =>
-  navigator.serviceWorker.register("../sw.ts");
-
 export const addButton = ({
   onclick,
   name,
