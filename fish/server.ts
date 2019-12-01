@@ -37,7 +37,7 @@ app.post("/send", (req, res) => {
   const topic = process.env.TOPIC;
   const { payload, fish } = req.body;
 
-  if (!payload || !fish || fish !== process.env.FISH_KEY) {
+  if (!payload) {
     throw "invalid push";
   }
 

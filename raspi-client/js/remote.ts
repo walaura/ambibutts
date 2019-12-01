@@ -1,6 +1,7 @@
 import * as firebase from "firebase";
-import { firebaseConfig, Action } from "./config";
+import { Action } from "./tv";
 import { Dispatch } from "./dispatch";
+import config from "../../config";
 
 export const getActionFromMessage = msg => {
   const action = JSON.parse(msg.data.payload) as Action;
@@ -14,12 +15,14 @@ export const getActionFromMessage = msg => {
 const dispatchRemote: Dispatch = payload => {
   fetch(process.env.FISH_REMOTE_URL + "/send", {
     method: "post",
-    body: JSON.stringify({ payload, fish: process.env.FISH_KEY })
+    body: JSON.stringify({
+      payload
+    })
   });
 };
 
 const registerRemote = async (): Promise<void> => {
-  firebase.initializeApp(firebaseConfig);
+  firebase.initializeApp(config.firebase);
 
   const sw = navigator.serviceWorker.register("../sw.ts");
   const messaging = firebase.messaging();
