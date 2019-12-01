@@ -1,4 +1,4 @@
-import { SequenceName, sequences, Action } from "../shared/tv";
+import { SequenceName, Action } from "../shared/tv";
 import { addButton } from "./js/helpers";
 
 const urls = require("../.tunnels.json");
@@ -13,13 +13,17 @@ const dispatch = (action: Action) => {
 };
 
 const main = async () => {
-  Object.keys(sequences).forEach((name: SequenceName) => {
+  const { sequences } = await fetch(
+    urls["ambibutts-server"] + "/what-can-i-do"
+  ).then(r => r.json());
+
+  sequences.forEach(seq => {
     addButton({
-      name,
+      name: seq,
       onclick: () =>
         dispatch({
           type: "sequence",
-          seq: name
+          seq
         })
     });
   });
