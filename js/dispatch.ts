@@ -1,4 +1,4 @@
-import { Action, sequences } from "./state";
+import { Action, sequences } from "./config";
 
 export type Dispatch = (action: Action) => void;
 

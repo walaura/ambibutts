@@ -1,45 +1,27 @@
-import { dispatchRemote, registerRemote } from "./js/remote";
-import { SequenceName, sequences } from "./js/state";
-
-const addButton = ({ onclick, name }) => {
-  const $btn = document.createElement("button");
-  $btn.innerText = name;
-  $btn.onclick = onclick;
-  document.body.appendChild($btn);
-};
+import { registerRemote } from "./js/remote";
+import { getWorkers, addButton } from "./js/helpers";
 
 const main = async () => {
-  const workers = await navigator.serviceWorker.getRegistrations();
-  const hasWorkers = workers.length > 0;
+  const { hasWorkers, workers } = await getWorkers();
 
   if (!hasWorkers) {
     addButton({
-      name: "register sw",
+      name: "Install server",
+      useOnce: true,
       onclick: async () => {
         await registerRemote();
-        window.location.reload();
       }
-    });
-    Object.keys(sequences).forEach((name: SequenceName) => {
-      addButton({
-        name,
-        onclick: () =>
-          dispatchRemote({
-            type: "sequence",
-            seq: name
-          })
-      });
     });
   } else {
     addButton({
-      name: "unregister sws",
+      name: "Uninstall server",
+      useOnce: true,
       onclick: async () => {
         await Promise.all(
           workers.map(sw => {
             sw.unregister();
           })
         );
-        window.location.reload();
       }
     });
   }

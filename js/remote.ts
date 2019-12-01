@@ -1,6 +1,5 @@
 import * as firebase from "firebase";
-import { firebaseConfig } from "./config";
-import { Action } from "./state";
+import { firebaseConfig,Action } from "./config";
 import { Dispatch } from "./dispatch";
 
 export const getActionFromMessage = msg => {
