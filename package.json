@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "ts-node index.ts"
+    "start": "tsmon index.ts"
   },
   "author": "walaura",
   "license": "ISC",
@@ -15,6 +15,7 @@
     "express": "^4.17.1",
     "node-fetch": "^2.6.0",
     "ts-node": "^8.5.4",
+    "tsmon": "^0.5.5",
     "typescript": "^3.7.2"
   }
 }
