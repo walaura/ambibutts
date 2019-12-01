@@ -29,6 +29,14 @@ button {
   font-weight: bold;
   cursor: pointer;
 }
+button[disabled] {
+  filter: grayscale(1);
+}
+
+button[data-secondary] {
+  background-color: #ddd;
+  color: #000;
+}
 
 a {
   color: tomato;

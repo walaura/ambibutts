@@ -14,8 +14,21 @@ const main = async () => {
     });
   } else {
     addButton({
+      name: "Reinstall server",
+      useOnce: true,
+      onclick: async () => {
+        await Promise.all(
+          workers.map(sw => {
+            sw.unregister();
+          })
+        );
+        await registerRemote();
+      }
+    });
+    addButton({
       name: "Uninstall server",
       useOnce: true,
+      secondary: true,
       onclick: async () => {
         await Promise.all(
           workers.map(sw => {

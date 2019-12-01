@@ -1,9 +1,7 @@
 import config from "../config";
 
-require("dotenv").config();
 const express = require("express");
 const admin = require("firebase-admin");
-const atob = require("atob");
 const cors = require("cors");
 const bodyParser = require("body-parser");
 const app = express();
@@ -36,10 +34,10 @@ app.post("/register/:tk", (req, res) => {
 });
 
 app.post("/send", (req, res) => {
-  const topic = config.fish.topic;
+  const { topic, secret } = config.fish;
   const { payload, fish } = req.body;
 
-  if (!payload || !fish || fish !== config.fish.secret) {
+  if (!payload || !fish || fish !== secret) {
     throw "invalid push";
   }
 
@@ -57,7 +55,7 @@ app.post("/send", (req, res) => {
     })
     .catch(error => {
       console.log("Error sending message:", error);
-      res.status(500).send(error);
+      res.status(500).send({ error });
     });
 });
 

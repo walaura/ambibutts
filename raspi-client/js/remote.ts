@@ -17,7 +17,7 @@ const dispatchRemote: Dispatch = payload => {
     method: "post",
     body: JSON.stringify({
       payload,
-      apiKey: config.firebase.apiKey
+      fish: config.fish.secret
     })
   });
 };
