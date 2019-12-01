@@ -1,4 +1,4 @@
-import config from "../config";
+import config from "../shared/config";
 import { handleNotification } from "./connectors/from-fish";
 
 importScripts("https://www.gstatic.com/firebasejs/7.5.0/firebase-app.js");

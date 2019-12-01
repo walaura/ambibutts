@@ -1,5 +1,5 @@
 import * as firebase from "firebase";
-import config from "../../config";
+import config from "../../shared/config";
 
 const register = async (
   sw: ServiceWorkerRegistration

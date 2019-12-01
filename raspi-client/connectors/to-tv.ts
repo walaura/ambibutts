@@ -1,4 +1,4 @@
-import config from "../../config";
+import config from "../../shared/config";
 import { Keys } from "../../shared/tv";
 
 export const sendKey = async (key: Keys) =>
