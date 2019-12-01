@@ -1,6 +1,6 @@
-import { dispatchRemote, registerRemote } from "./js/remote";
 import { SequenceName, sequences } from "./js/config";
-import { getWorkers, addButton } from "./js/helpers";
+import { addButton, getWorkers } from "./js/helpers";
+import { dispatchRemote } from "./js/remote";
 
 const main = async () => {
   const { hasWorkers } = await getWorkers();
